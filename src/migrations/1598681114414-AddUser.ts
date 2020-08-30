@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { User } from 'src/modules/auth/user.entity';
+import { User } from 'src/modules/auth/entities/user.entity';
 import { Scope } from 'src/common/enums/scope.enum';
 import { genSalt, hash } from 'bcrypt';
 

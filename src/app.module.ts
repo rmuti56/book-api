@@ -13,6 +13,7 @@ import { ConfigModule } from './config/config.module';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
+    
     },
   ],
 })

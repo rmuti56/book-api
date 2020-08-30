@@ -4,11 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { ConfigService } from '@nestjs/config';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { UserRepository } from './user.repository';
-import { LoginDto } from './dto/login.dto';
+import { UserRepository } from '../repositories/user.repository';
+import { LoginDto } from '../dto/login.dto';
 import { RedisService } from 'src/redis/redis.service';
-import { User } from './user.entity';
+import { User } from '../entities/user.entity';
 import { Scope } from 'src/common/enums/scope.enum';
+import { LoginResponse } from '../classes/login-response.classes';
 
 @Injectable()
 export class AuthService {
@@ -34,7 +35,7 @@ export class AuthService {
     return await this.genToken(admin);
   }
 
-  async genToken(user: User) {
+  async genToken(user: User): Promise<LoginResponse> {
     const accessTokenId = uuidv4();
     const accessToken = await this.jwtService.signAsync(
       {},
@@ -63,7 +64,7 @@ export class AuthService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, salt, ...responseUser } = user;
     return {
-      user: responseUser,
+      user: responseUser as User,
       accessToken,
       refreshToken,
     };

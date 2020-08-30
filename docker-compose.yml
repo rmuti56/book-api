@@ -29,6 +29,7 @@ services:
     # restart: unless-stopped
 
   redis:
+    container_name: redis_peuan_container
     image: redis:latest
     ports:
       - 6379:6379

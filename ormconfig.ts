@@ -5,7 +5,7 @@ const ormConfig = {
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    entities: ['dist/src/modules/**/*.entity.{js,ts}'],
+    entities: ['dist/src/modules/**/**/*.entity.{js,ts}'],
     migrations: ['dist/src/migrations/*.{js,ts}'],
     synchronize: true,
     migrationsRun: true,

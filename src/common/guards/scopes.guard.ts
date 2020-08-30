@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Scope } from '../enums/scope.enum';
-import { User } from 'src/modules/auth/user.entity';
+import { User } from 'src/modules/auth/entities/user.entity';
 
 @Injectable()
 export class ScopesGuard implements CanActivate {
@@ -23,10 +23,10 @@ export class ScopesGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const user: User = request.user;
 
-    const hasScope = () =>
+    const isAllow = () =>
       scopes.some(scope => user.scopes?.some(userScope => userScope === scope));
 
-    if (user && user.scopes && hasScope()) {
+    if (user && user.scopes && isAllow()) {
       return true;
     }
 

@@ -1,6 +1,6 @@
 import { Repository, EntityRepository } from 'typeorm';
-import { User } from './user.entity';
-import { LoginDto } from './dto/login.dto';
+import { User } from '../entities/user.entity';
+import { LoginDto } from '../dto/login.dto';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -24,7 +24,6 @@ export class UserRepository extends Repository<User> {
         'createDate',
         'scopes',
         'updateDate',
-      
       ],
       where:{
         username

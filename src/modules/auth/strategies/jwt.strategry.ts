@@ -4,7 +4,7 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 
 import { RedisService } from 'src/redis/redis.service';
 import { ConfigService } from '@nestjs/config';
-import { JwtPayload } from './interface/jwt-payload.interface';
+import { IJwtPayload } from '../interfaces/jwt-payload.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -18,8 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: JwtPayload) {
-    console.log(payload)
+  async validate(payload: IJwtPayload) {
     const scopes = await this.redisService.getScopes(payload.sub, payload.jti);
 
     if (!scopes) {
