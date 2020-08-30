@@ -8,5 +8,5 @@ export class Group extends Base {
   name: string
   
   @Column()
-  permissions: Scope
+  permission: Scope
 }

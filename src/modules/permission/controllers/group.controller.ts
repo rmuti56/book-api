@@ -1,6 +1,7 @@
-import { Controller, Get, Post } from "@nestjs/common";
+import { Controller, Get, Post, Body } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { GroupService } from "../services/group.service";
+import { CreateGroupDto } from "../dto/create-group.dto";
 
 @Controller('group')
 @ApiTags('group')
@@ -13,8 +14,10 @@ export class GroupController {
   }
 
   @Post()
-  createGroup(){
-    return this.groupService.createGroup()
+  createGroup(
+    @Body() createGroupDto:CreateGroupDto
+  ){
+    return this.groupService.createGroup(createGroupDto)
   }
 
 
