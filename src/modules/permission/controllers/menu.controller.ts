@@ -2,7 +2,10 @@ import { Controller, Get, Post, Body } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { MenuService } from "../services/menu.service";
 import { CreateMenuDto } from "../dto/create-menu.dto";
+import { Auth } from "src/common/decorators/auth.decorator";
+import { Scope } from "src/common/enums/scope.enum";
 
+@Auth([Scope.SUPER_ADMIN])
 @Controller('menu')
 @ApiTags('menu')
 export class MenuController {

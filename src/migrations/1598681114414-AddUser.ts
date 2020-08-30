@@ -7,7 +7,7 @@ import { genSalt, hash } from 'bcrypt';
 
 export class AddUser1598681114414 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
-    const userRepository = await queryRunner.connection.getRepository(User);
+    const userRepository = queryRunner.connection.getRepository(User);
     const salt = await genSalt();
     const hashPassword = await hash(process.env.ADMIN_PASSWORD, salt);
 
