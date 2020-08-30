@@ -3,8 +3,8 @@ import { Scope } from "src/common/enums/scope.enum"
 
 export class CreateGroupDto{
     @IsString()
-    name: string
+    readonly name: string
     
     @IsEnum(Scope)
-    permission: Scope
+    readonly permission: Scope
 }
