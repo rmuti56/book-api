@@ -20,7 +20,7 @@ export class MenuService {
   async createMenu(createMenuDto: CreateMenuDto) {
     const groups = await this.groupRepository.findByIds(createMenuDto.groupIds);
     if(groups.length !== createMenuDto.groupIds.length){
-      throw new BadRequestException('groupIds_not_found')
+      throw new BadRequestException('group_ids_not_found')
     }
 
     return this.menuRepository.createMenu(createMenuDto)
