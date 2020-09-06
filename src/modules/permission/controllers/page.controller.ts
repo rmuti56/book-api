@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Put } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreatePageDto } from '../dto/create-page.dto';
 import { UpdatePageDto } from '../dto/update-page.dto';
@@ -16,8 +16,10 @@ export class PageController {
     return this.pageService.createPage(createPageDto);
   }
 
-  @Put()
-  updatePage(@Body() updatePageDto: UpdatePageDto) {
-    return this.pageService.updatePage(updatePageDto);
+  @Put(':pageId')
+  updatePage(
+    @Param('pageId') pageId: string,
+    @Body() updatePageDto: UpdatePageDto) {
+    return this.pageService.updatePage(pageId,updatePageDto);
   }
 }

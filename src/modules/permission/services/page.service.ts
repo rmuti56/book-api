@@ -21,9 +21,10 @@ export class PageService {
     }
     return this.pageRepository.createPage(createPageDto);
   }
-  async updatePage(updatePageDto: UpdatePageDto) {
+
+  async updatePage(pageId: string, updatePageDto: UpdatePageDto) {
     const groups = await this.groupRepository.findByIds(updatePageDto.groupIds);
-    const page = await this.pageRepository.findOne(updatePageDto.id);
+    const page = await this.pageRepository.findOne(pageId);
 
     if (groups.length !== updatePageDto.groupIds.length) {
       throw new BadRequestException('group_ids_not_found');
@@ -31,6 +32,6 @@ export class PageService {
     if (!page) {
       throw new BadRequestException('page_not_found');
     }
-    return this.pageRepository.updatePage(updatePageDto);
+    return this.pageRepository.updatePage(pageId, updatePageDto);
   }
 }

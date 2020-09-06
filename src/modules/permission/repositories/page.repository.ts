@@ -3,8 +3,8 @@ import { EntityRepository, Repository } from "typeorm";
 import { Page } from '../entities/page.entity'
 import { CreatePageDto }  from '../dto/create-page.dto'
 import { UpdatePageDto } from "../dto/update-page.dto";
-@EntityRepository(Page)
 
+@EntityRepository(Page)
 export class PageRepository extends Repository<Page>{
 
   async createPage (createPageDto: CreatePageDto) {
@@ -12,8 +12,11 @@ export class PageRepository extends Repository<Page>{
     return await this.save(page)
   }
 
-  async updatePage (updatePageDto: UpdatePageDto) {
-    return await this.save(updatePageDto)
+  async updatePage (pageId: string ,updatePageDto: UpdatePageDto) {
+    return await this.save({
+      id: pageId,
+      ...updatePageDto
+    })
   }
 }
 
