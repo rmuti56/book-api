@@ -1,4 +1,5 @@
 import { Entity, Column } from "typeorm";
+
 import { Base } from "src/common/entitys/base.entity";
 import { Scope } from "src/common/enums/scope.enum";
 

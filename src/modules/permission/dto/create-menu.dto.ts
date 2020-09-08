@@ -1,8 +1,6 @@
 import { IsString, ArrayNotEmpty } from 'class-validator';
 
 export class CreateMenuDto {
-
-
   @ArrayNotEmpty()
   @IsString({each: true})
   readonly  groupIds: string[];

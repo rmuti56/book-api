@@ -1,7 +1,8 @@
 import { EntityRepository, Repository } from "typeorm";
+import { ConflictException } from "@nestjs/common";
+
 import { Group } from "../entities/group.entity";
 import {CreateGroupDto} from '../dto/create-group.dto'
-import { ConflictException } from "@nestjs/common";
 import { UpdateGroupDto } from "../dto/update-group.dto";
 
 @EntityRepository(Group)
