@@ -1,9 +1,14 @@
 import { UseGuards, applyDecorators } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import {
+  ApiForbiddenResponse,
+  ApiUnauthorizedResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
+
 import { Scopes } from './scopes.decorator';
 import { Scope } from '../enums/scope.enum';
 import { ScopesGuard } from '../guards/scopes.guard';
-import { ApiForbiddenResponse, ApiUnauthorizedResponse, ApiBearerAuth } from '@nestjs/swagger';
 
 export function Auth(scopes?: Scope[]) {
   if (scopes) {

@@ -1,4 +1,15 @@
 import { Module } from '@nestjs/common';
+import { MulterModule } from '@nestjs/platform-express';
 
-@Module({})
+import { ImageController } from './controllers/image.controller';
+
+@Module({
+  imports: [
+    MulterModule.register({
+      dest: './files',
+    }),
+  ],
+  controllers: [ImageController],
+  providers: [],
+})
 export class UploadModule {}
