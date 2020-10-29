@@ -8,9 +8,7 @@ import { AppLogger } from './logger/logger.service';
 
 async function bootstrap() {
 
-  const app = await NestFactory.create(AppModule,{
-    logger: false
-  });
+  const app = await NestFactory.create(AppModule,);
   app.use(RequestIdMiddleware)
   app.useLogger(new AppLogger())
   app.enableCors();
