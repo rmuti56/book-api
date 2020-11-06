@@ -76,4 +76,11 @@ export class BookService {
     book.totalRead = book.totalRead + 1;
     return await this.bookRepository.save(book);
   }
+
+
+  async deleteBook(bookId: string){
+    const book = await this.getBookById(bookId)
+
+    return await this.bookRepository.delete(book.id)
+  }
 }

@@ -1,5 +1,14 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+
 import { CreateBookDto } from '../dto/create-book.dto';
 import { UpdateRatingDto } from '../dto/update-rating.dto';
 import { BookService } from '../services/book.service';
@@ -47,5 +56,10 @@ export class BookController {
   @Put('read/:bookId')
   readBook(@Param('bookId') bookId: string) {
     return this.bookService.readBook(bookId);
+  }
+
+  @Delete(':bookId')
+  deleteBook(@Param('bookId') bookId: string) {
+    return this.bookService.deleteBook(bookId);
   }
 }
