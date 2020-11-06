@@ -8,14 +8,14 @@ const ormConfig = {
   entities: ['dist/src/modules/**/**/*.entity.{js,ts}'],
   migrations: ['dist/src/migrations/*.{js,ts}'],
   synchronize: false,
-  // migrationsRun: true,
+  migrationsRun: true,
   cli: {
     migrationsDir: 'src/migrations',
   },
   extra: {
-    ssl: { rejectUnauthorized: false },
-   },
+   ssl: { rejectUnauthorized: false },
+  },
 };
-console.log(ormConfig)
+
 
 module.exports = ormConfig;

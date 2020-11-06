@@ -6,13 +6,13 @@ import { ConfigService } from '@nestjs/config';
 export class RedisService {
   private redisClient: RedisClient;
 
-  constructor(private configService: ConfigService) {
-    this.redisClient = createClient({
-      host: this.configService.get<string>('REDIS_HOST'),
-      port: this.configService.get<number>('REDIS_PORT'),
-      password: this.configService.get<string>('REDIS_PASSWORD'),
-    });
-  }
+  // constructor(private configService: ConfigService) {
+  //   this.redisClient = createClient({
+  //     host: this.configService.get<string>('REDIS_HOST'),
+  //     port: this.configService.get<number>('REDIS_PORT'),
+  //     password: this.configService.get<string>('REDIS_PASSWORD'),
+  //   });
+  // }
 
   get(key: string): Promise<string | null> {
     return new Promise((resolve, reject) => {
